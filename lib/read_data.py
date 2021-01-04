@@ -1,24 +1,16 @@
 import streamlit as st
 import pandas as pd
 
-from lib.requester import APIDataRequester
+from lib.requester import APIDataGetRequester
 from lib.listas_de_valores_definidos import (
+    db_tables_list,
+    months_list,
+    years_list,
     fornecedores_list,
     posto_list,
     modalidade_list,
     subgrupos_list
 )
-
-
-def get_API_data(table, row_filter, columns=None):
-    """
-    Dar um jeito de salvar na memória algo, pra n ficar consultando INFINITO do banco de dados
-    :param table:
-    :param row_filter:
-    :param columns:
-    :return:
-    """
-    return APIDataRequester(table, row_filter)
 
 
 class ReadData:
@@ -37,13 +29,6 @@ class ReadData:
             3. Se você quer consultar todas as colunas ou apenas algumas; # Será desenvolvido no futuro
         """)
 
-        tables_list = [
-            "empresas_valores_inputados",
-            "valor_tarifas",
-            "valor_bandeiras",
-            "valor_impostos",
-        ]
-
         possible_row_filters_list = [
             "todas as linhas",
             "linhas filtradas por data"
@@ -51,7 +36,7 @@ class ReadData:
 
         selected_table = st.selectbox(
             "Selecione a tabela:",
-            tables_list,
+            db_tables_list()
         )
 
         if selected_table:
@@ -71,7 +56,7 @@ class ReadData:
                         tarifas_other_query_params = _select_tarifas_params_for_filter()
 
             result_dataframe = pd.DataFrame(
-                    APIDataRequester(
+                    APIDataGetRequester(
                         table=selected_table,
                         row_filter=selected_filter,
                         query_date=query_date,
@@ -84,17 +69,14 @@ class ReadData:
 
 
 def _select_month_and_year_for_filter():
-    months_list = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']
-    years_list = [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021]
-
     selected_month = st.selectbox(
         "Selecione o mês para o filtro de data:",
-        months_list
+        months_list()
     )
 
     selected_year = st.selectbox(
         "Selecione o ano para o filtro de data:",
-        years_list
+        years_list()
     )
 
     return str(f'01-{selected_month}-{selected_year}')

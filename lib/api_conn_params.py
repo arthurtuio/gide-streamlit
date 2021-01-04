@@ -29,6 +29,7 @@ class LocalAPIEndpoints:
     HOME = "http://0.0.0.0:8080/"
     GET_ALL = "api/v1/get/{}/all"
     GET_BY_DATE = "api/v1/get/{}?data_referencia={}"
+    INSERT_COMPANY = "api/v1/insert/empresas_inputadas"
 
     def get_all_data_from_table(self, table_name):
         if table_name == "valor_tarifas":
@@ -83,5 +84,9 @@ class LocalAPIEndpoints:
 
         else:
             raise Exception
+
+    def insert_company_data(self):
+        return self.HOME + self.INSERT_COMPANY
+
 
 

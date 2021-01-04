@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 
 from lib.read_data import ReadData
+from lib.write_data import WriteData
 
 
 class MainPage:
@@ -33,10 +34,10 @@ class MainPage:
         if operacao_selecionada == lista_operacoes[0]:
             ReadData().execute()
 
-        elif operacao_selecionada == lista_operacoes[0]:
-            pass
+        elif operacao_selecionada == lista_operacoes[1]:
+            WriteData().execute()
 
-        elif operacao_selecionada == lista_operacoes[0]:
+        elif operacao_selecionada == lista_operacoes[2]:
             pass
 
 
