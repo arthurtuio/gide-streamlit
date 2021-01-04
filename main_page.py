@@ -38,7 +38,7 @@ class MainPage:
             WriteData().execute()
 
         elif operacao_selecionada == lista_operacoes[2]:
-            pass
+            st.markdown("** Será feito no futuro **")
 
 
 if __name__ == '__main__':
