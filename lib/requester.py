@@ -5,7 +5,7 @@ from lib.api_conn_params import HerokuAPIEndpoints, LocalAPIEndpoints
 
 
 def APIDataGetRequester(table, row_filter, columns=None, query_date=None, tarifas_other_query_params=None):
-    gide_api = LocalAPIEndpoints()
+    gide_api = HerokuAPIEndpoints()
 
     if row_filter == "todas as linhas":
         endpoint = gide_api.get_all_data_from_table(table)
@@ -24,7 +24,7 @@ def APIDataGetRequester(table, row_filter, columns=None, query_date=None, tarifa
 
 
 def APIDataPostRequester(user_inputted_data):
-    gide_api = LocalAPIEndpoints()
+    gide_api = HerokuAPIEndpoints()
 
     endpoint = gide_api.insert_company_data()
     parsed_data = json.loads(json.dumps(user_inputted_data))
