@@ -1,6 +1,4 @@
 import streamlit as st
-import pandas as pd
-import numpy as np
 
 from lib.read_data import ReadData
 from lib.write_data import WriteData
