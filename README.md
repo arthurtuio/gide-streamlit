@@ -1,15 +1,23 @@
-# Português
-Repo publico criado para armazenar o codigo do tutorial "Criando uma aplicação de dados com Streamlit e deployando a mesma com Heroku" da Conferencia Python Brasil 2020.
+# GIDE Streamlit Webpage #
 
-## Executando em seu PC
-Para baixar este repositório em seu PC, faça o fork, depois o clone do mesmo, realizado da seguinte forma em sua linha de comando:
+Este repo contém o código necessário para de uma interface web para a GIDE, 
+usando a biblioteca Streamlit, de Python.
 
-`git clone https://github.com/arthurtuio/streamlit-heroku-python-br-2020.git`
+## Arquivos que você vai encontrar nesse repo ##
+- `main_page.py`: Código principal do repositório. É nele que a página web será sempre inicializada;
+- `Procfile`: Arquivo necessário para que esse repo rode no Heroku (servidor web);
+- `setup.sh`: Outro arquivo necessário para que esse repo rode no Heroku (servidor web);
+- `requirements.txt`: Arquivo contendo as bibliotecas usadas neste repositório
+- pasta lib: Contém diversos códigos auxiliares para a página web, tanto para realizar a comuinicação com a 
+  API da GIDE, quanto acessar outras partes da página web, de forma que deixando eles lá, o código principal
+  (app.py) fica bem abstrato, e mais fácil de ser entendido.
 
-Em seguida, você deve instalar as bibliotecas necessárias para executar o código. Você pode fazer isso desta forma:
-- `pip3 install -r requirements.txt`
+## Explicando como funciona o Streamlit ##
+Por sorte, existe um tutorial da Python Brasil 2020 100% focado em ensinar como
+usar essa biblioteca, e já fazer o deploy da mesma na web usando Heroku. O link é esse:
+https://streamlit-heroku-python-br2020.herokuapp.com/
+Quem criou foi o @arthurtuio, qualquer dúvida só falar com ele
 
-## Exemplo de scripts do Streamlit
-Na pasta `/examples/english`, há exemplos de scripts que podem ser executados no streamlit, para entender melhor a lib.
-Para executar qualquer um deles, basta digitar na linha de comando: `streamlit run {example_name}`, onde `{example_name}` é o nome do arquivo, assim:
-`streamlit run En_6_Interactivity_part_2.py`
+## Próximos passos ## 
+- Depende primeiro da lógica de cálculo da GIDE, que vai pro repositório da API.
+Feito isso lá, o próximo passo é adicionar uma lógica de frontend aqui.
